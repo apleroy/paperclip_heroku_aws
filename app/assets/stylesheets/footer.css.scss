@@ -1,0 +1,22 @@
+
+@import "colors";
+
+//---------------------------------------------------------------------------------------------------------------//
+//FOOTER
+//---------------------------------------------------------------------------------------------------------------//
+
+.main_footer {
+  color: black;
+
+  text-align: left;
+  font-family: SourceSansPro-ExtraLight;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 10px;
+  border-top: 1px solid $background_grey;
+}
+
+.footer_copyright {
+  text-align: center;
+}
+

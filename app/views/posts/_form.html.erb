@@ -1,0 +1,108 @@
+<style>
+    /*main image background*/
+    #main_image_target {
+        background-image: url('<%= @post.post_image.url %>');
+    }
+</style>
+
+<div class="form_block">
+  <%= form_for @post, :url => posts_path, :html => { :multipart => true } do |f| %>
+
+      <% flash.each do |key, value| %>
+          <div class="alert alert-error alert-block">
+            <i class="fa fa-times fa-1x close_error_alert" data-dismiss="alert"></i>
+            <%= value unless value.blank? %>
+          </div>
+      <% end %>
+
+      <div class="resource_form_section">
+        <div class="resource_form_section_title">
+          Post Name
+        </div>
+
+        <%= f.text_field :name, maxlength: 300, class: "new_resource_field", id: "resource_summary" %>
+
+      </div>
+      <div class="col-sm-12 resource_break"></div>
+
+      <div class="resource_form_section">
+        <div class="resource_form_section_title">
+          Post Description
+        </div>
+
+        <%= f.text_area :description, maxlength: 300, class: "new_resource_field", id: "resource_summary" %>
+
+      </div>
+      <div class="col-sm-12 resource_break"></div>
+
+
+      <div class="resource_form_section">
+
+        <div class="col-sm-6 form_block_left">
+          <div class="resource_form_section_title">
+            Post Image
+          </div>
+
+          <% if @post.post_image.nil? || @post.post_image.blank? %>
+              <div class="fileupload fileupload-new" data-provides="fileupload">
+                <div class="input-append">
+                  <div class="new_resource_field">
+                    <span class="fileupload-preview"></span>
+                  </div>
+                    <span class="btn btn-white btn-file">
+                      <span class="fileupload-new">
+                        Select file
+                      </span>
+                      <span class="fileupload-exists">
+                        Change
+                      </span>
+                      <%= f.file_field :post_image, id: "main_image_input", class: "default" %>
+                    </span>
+                  <span class="btn btn-white fileupload-exists" data-dismiss="fileupload" id="main_image_remove_button">Remove</span>
+                </div>
+              </div>
+          <% else %>
+              <div class="fileupload fileupload-exists" data-provides="fileupload">
+                <div class="input-append">
+                  <div class="new_resource_field">
+                  <span class="fileupload-preview">
+                    <%= @post.post_image_file_name %>
+                  </span>
+                  </div>
+                    <span class="btn btn-white btn-file">
+                      <span class="fileupload-new">
+                        Select file
+                      </span>
+                      <span class="fileupload-exists">
+                        Change
+                      </span>
+                      <%= f.file_field :post_image, id: "main_image_input", class: "default" %>
+                    </span>
+                  <span class="btn btn-white fileupload-exists" data-dismiss="fileupload" id="main_image_remove_button">Remove</span>
+                </div>
+              </div>
+          <% end %>
+          <%= f.hidden_field 'hidden_1', value: @post.post_image_file_name, id: "hidden_1" %>
+        </div>
+
+        <div class="col-sm-6 form_block_right">
+          <div class="resource_form_section_title">
+            Post Image Preview
+          </div>
+          <div class="aspect_wrapper_main_image">
+            <div class="content_main_image" id="main_image_target">
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col-sm-12 resource_break"></div>
+
+      <div class="actions">
+        <%= f.submit "Create Post", class: "btn btn-lg btn-login btn-block registration_button" %>
+      </div>
+
+
+  <% end %>
+</div>

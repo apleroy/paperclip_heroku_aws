@@ -37,4 +37,27 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'factory_girl_rails'
 
+group :development, :test do
+  gem 'rspec-rails', '2.13.1' #http://stackoverflow.com/questions/22962048/rails-4-could-not-find-generator-rspecinstall
+  gem 'selenium-webdriver', "~> 2.43"
+  gem 'capybara'
+  gem 'spork-rails'
+  gem 'childprocess'
+  gem "chromedriver-helper" #use chrome with selenium
+  gem "database_cleaner"
+  gem 'minitest' #needed for rspec support
+end
+
+
+ruby "2.0.0"
+
+#HEROKU
+gem 'rails_12factor', group: :production
+
+#https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
+gem 'puma'
+
+
+gem "paperclip", "~> 4.2" #https://github.com/thoughtbot/paperclip

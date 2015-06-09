@@ -1,0 +1,78 @@
+<div id="main_content">
+  <div class="container">
+    <div class="row">
+
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="main_title_block">
+              <div class="title">
+                PostIt
+              </div>
+              <div class="subtitle">
+                PostIt is an app blah blah
+              </div>
+            </div>
+
+            <div class="index_actions">
+              <div class="index_title">
+                Listing Postings
+              </div>
+
+                <%= link_to new_post_path do %>
+                  <div class="index_new">
+                    <i class="fa fa-plus-circle fa-4x"></i>
+                  </div>
+                <% end %>
+
+
+            </div>
+            <div class="col-sm-12 resource_break"></div>
+
+            <div class="index_block">
+                <% @posts.order('created_at DESC').each do |post| %>
+                    <div class="post_block">
+                      <!-- if image is blank: extend div width, else: show image -->
+                      <% if post.post_image.blank? %>
+                          <div class="post_text_wrapper" style="width: calc(100% - 20px)">
+                            <div class="header">
+                              <div class="post_title">
+                                <%= link_to "(" + post.created_at.strftime("%m/%d/%Y") + ")  " + post.name, post_path(post) %> <i class="fa fa-angle-right"></i>
+                              </div>
+                            </div>
+                            <div class="body">
+                              <div class="post_description">
+                                 <%= post.description %>
+                              </div>
+                            </div>
+                          </div>
+                      <% else %>
+                          <div class="post_text_wrapper" style="width: calc(100% - 319px)">
+                            <div class="header">
+                              <div class="post_title">
+                                <%= link_to "(" + post.created_at.strftime("%m/%d/%Y") + ")  " + post.name, post_path(post) %> <i class="fa fa-angle-right"></i>
+                              </div>
+                            </div>
+                            <div class="body">
+                              <div class="post_description">
+                                <%= post.description %>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="aspect_wrapper_main_image">
+                            <div class="content_main_image" style="background-image: url('<%= post.post_image.url %>');">
+                            </div>
+                          </div>
+                      <% end %>
+                    </div>
+
+                    <div class="col-sm-12 resource_break"></div>
+                <% end %>
+            </div>
+
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-12 resource_break"></div>
+
+    </div>
+  </div>
+</div>

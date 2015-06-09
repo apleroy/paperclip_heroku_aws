@@ -1,0 +1,215 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import "colors";
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------//
+//LINKS AND BUTTONS
+//---------------------------------------------------------------------------------------------------------------//
+
+a {
+  color: inherit;
+}
+a:hover {
+  color: inherit;
+}
+
+.post_content {
+  a {
+    color: #428bca;
+  }
+  a:hover {
+    color: #428bca;
+    text-decoration: underline;
+  }
+}
+
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------//
+//MAIN
+//---------------------------------------------------------------------------------------------------------------//
+
+#main_content {
+  margin-top: 50px;
+  font-family: SourceSansPro-Light;
+}
+
+.main_title_block {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 10px;
+
+
+  .title {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 1px solid $light_grey;
+    border-bottom: 1px solid $light_grey;
+    padding: 10px;
+
+  }
+}
+
+.new_resource_field {
+  height: 40px;
+  width: 100%;
+  padding: 8px 8px;
+  font-size: 16px;
+  border: 2px solid #c2c2c2;
+  margin-bottom: 10px;
+  font-family: SourceSansPro-Light;
+  background: transparent;
+}
+
+.aspect_wrapper_main_image {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  z-index: 100;
+  background-color: $light_grey;
+}
+
+.post_block {
+  background-color: $light_grey;
+  height: 150px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+
+  .post_text_wrapper {
+    float: left;
+    margin-left: 10px;
+    width: calc(100% - 319px);
+
+    .header {
+      border-bottom: 1px solid $darker_grey;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 18px;
+
+      padding-bottom: 10px;
+
+      .post_date {
+        display: inline;
+      }
+      .post_title {
+        display: inline;
+      }
+
+    }
+    .horizontal_space_bar {
+      display: inline;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    .body {
+      font-size: 16px;
+    }
+
+  }
+
+
+  .aspect_wrapper_main_image {
+    width: 289px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+}
+
+.aspect_wrapper_main_image::after {
+  padding-top: 45%; /* percentage of containing block _width_ */
+  display: block;
+  content: "";
+}
+
+.content_main_image {
+  position: absolute;
+  top: 0; bottom: 0; right: 0; left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 2px solid white;
+}
+
+.resource_form_section_title {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+.resource_break {
+  clear: both;
+}
+
+
+.form_block_left {
+  padding-left: 0px;
+}
+.form_block_right {
+  padding-right: 0px;
+}
+
+.btn-white {
+  border: 2px solid $light_grey;
+  border-radius: 5px !important;
+}
+
+.form_block {
+  margin-bottom: 50px;
+}
+
+.index_actions {
+  width: 100%;
+  height: 70px;
+}
+.index_title {
+  float: left;
+  font-size: 30px;
+  line-height: 70px;
+}
+.index_new {
+  float: right;
+  margin-top: 10px;
+
+}
+
+#edit_post {
+  float: left;
+  width: 50%;
+  padding-right: 5px;
+}
+
+#edit_post_button {
+  background-color: $highlight_green;
+  color: white;
+}
+#delete_post_button {
+  background-color: $home_red;
+  color: white;
+}
+
+#delete_post {
+  float: left;
+  width: 50%;
+  padding-left: 5px;
+}
+
+.image_block {
+  padding-bottom: 10px;
+  border-bottom: 1px solid $light_grey;
+  margin-bottom: 10px;
+}

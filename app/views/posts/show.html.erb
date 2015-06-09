@@ -1,0 +1,38 @@
+<div id="main_content">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <div class="main_title_block">
+          <div class="title">
+            <%= @post.name %>
+          </div>
+          <div class="subtitle">
+            <%= @post.description %>
+          </div>
+        </div>
+
+        <div class="image_block">
+          <div class="aspect_wrapper_main_image">
+            <div class="content_main_image" style="background-image: url('<%= @post.post_image.url %>');">
+            </div>
+          </div>
+        </div>
+
+          <div class="actions" id="edit_post">
+            <%= link_to "Edit Post", edit_post_path(@post), id: "edit_post_button",
+                        class: "btn btn-lg btn-login btn-block registration_button" %>
+          </div>
+          <div class="actions" id="delete_post">
+            <%= link_to "Delete Post", @post, method: :delete, data: { confirm: 'Delete this post?' },
+                        id: "delete_post_button", class: "btn btn-lg btn-login btn-block registration_button" %>
+          </div>
+
+      </div>
+      <div class="col-sm-1"></div>
+
+
+    </div>
+  </div>
+</div>
