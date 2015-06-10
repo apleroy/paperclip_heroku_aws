@@ -41,6 +41,12 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+
+    #if the hidden_post_image field is blank, the user removed the image - set to nil before saving
+    if params[:post]['hidden_post_image'] == ''
+      @post.post_image = nil
+    end
+
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post }

@@ -13,6 +13,7 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
+  require "paperclip/matchers" #http://www.rubydoc.info/gems/paperclip/Paperclip/Shoulda/Matchers
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -49,6 +50,15 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+
+    Capybara.register_driver :selenium do |app|
+      Capybara::Selenium::Driver.new(app, :browser => :chrome) #see chromium gem
+    end
+    #Capybara.raise_server_errors = false #Don't care that images or assets are missing   https://github.com/jnicklas/capybara/issues/932
+    #config.include Capybara::DSL
+    #config.include Rails.application.routes.url_helpers #http://stackoverflow.com/questions/4411930/how-can-i-make-capybara-use-routing-helpers
+
+    config.include Paperclip::Shoulda::Matchers #used for paperclip validations
   end
 
 

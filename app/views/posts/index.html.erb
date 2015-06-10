@@ -31,7 +31,7 @@
             <div class="col-sm-12 resource_break"></div>
 
             <div class="index_block">
-                <% @posts.order('created_at DESC').each do |post| %>
+                <% @posts.each do |post| %>
                     <div class="post_block">
                       <!-- if image is blank: extend div width, else: show image -->
                       <% if post.post_image.blank? %>

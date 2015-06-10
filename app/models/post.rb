@@ -1,9 +1,14 @@
 class Post < ActiveRecord::Base
 
-  has_attached_file :post_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :post_image, :content_type => /\Aimage\/.*\Z/
+  default_scope { order('created_at DESC') } #order posts in order of creation with the most recent post appearing first
 
-  validates :name, presence: true, uniqueness: {message: "There is already a Post with this name"}
-  validates :description, presence: true
+  has_attached_file :post_image, :default_url => "/images/:style/missing.png"
+
+  validates_attachment :post_image,
+                       :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
+                       :size => { :less_than => 5.megabytes }
+
+  validates :name, presence: true, length: { maximum: 100 }, uniqueness: {message: "There is already a Post with this name"}
+  validates :description, presence: true, length: { maximum: 300 }
 
 end
