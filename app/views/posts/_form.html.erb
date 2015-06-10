@@ -6,44 +6,48 @@
 </style>
 
 <div class="form_block">
-  <%= form_for @post, :url => posts_path, :html => { :multipart => true } do |f| %>
+  <%= form_for @post, :html => { :multipart => true } do |f| %>
 
-      <% flash.each do |key, value| %>
-          <div class="alert alert-error alert-block">
-            <i class="fa fa-times fa-1x close_error_alert" data-dismiss="alert"></i>
-            <%= value unless value.blank? %>
-          </div>
-      <% end %>
+      <div class="row">
+          <% flash.each do |key, value| %>
+              <div class="alert alert-error alert-block">
+                <i class="fa fa-times fa-1x close_error_alert" data-dismiss="alert"></i>
+                <%= value unless value.blank? %>
+              </div>
+          <% end %>
+      </div>
 
       <div class="resource_form_section">
+        <div class="row">
         <div class="resource_form_section_title">
-          Post Name
+          Post Name (required)
         </div>
 
-        <%= f.text_field :name, maxlength: 300, class: "new_resource_field", id: "resource_summary" %>
-
+        <%= f.text_field :name, maxlength: 100, class: "new_resource_field", id: "post_name" %>
+        </div>
       </div>
       <div class="col-sm-12 resource_break"></div>
 
       <div class="resource_form_section">
+        <div class="row">
         <div class="resource_form_section_title">
-          Post Description
+          Post Description (required)
         </div>
 
-        <%= f.text_area :description, maxlength: 300, class: "new_resource_field", id: "resource_summary" %>
-
+        <%= f.text_area :description, maxlength: 300, class: "new_resource_field", id: "post_description" %>
+        </div>
       </div>
       <div class="col-sm-12 resource_break"></div>
 
 
       <div class="resource_form_section">
-
+        <div class="row">
         <div class="col-sm-6 form_block_left">
           <div class="resource_form_section_title">
-            Post Image
+            Post Image (option)
           </div>
 
-          <% if @post.post_image.nil? || @post.post_image.blank? %>
+          <% if @post.post_image.blank? %>
               <div class="fileupload fileupload-new" data-provides="fileupload">
                 <div class="input-append">
                   <div class="new_resource_field">
@@ -56,9 +60,9 @@
                       <span class="fileupload-exists">
                         Change
                       </span>
-                      <%= f.file_field :post_image, id: "main_image_input", class: "default" %>
+                      <%= f.file_field :post_image, id: "post_image_input", class: "default" %>
                     </span>
-                  <span class="btn btn-white fileupload-exists" data-dismiss="fileupload" id="main_image_remove_button">Remove</span>
+                  <span class="btn btn-white fileupload-exists" data-dismiss="fileupload" id="post_image_remove_button">Remove</span>
                 </div>
               </div>
           <% else %>
@@ -76,13 +80,13 @@
                       <span class="fileupload-exists">
                         Change
                       </span>
-                      <%= f.file_field :post_image, id: "main_image_input", class: "default" %>
+                      <%= f.file_field :post_image, id: "post_image_input", class: "default" %>
                     </span>
-                  <span class="btn btn-white fileupload-exists" data-dismiss="fileupload" id="main_image_remove_button">Remove</span>
+                  <span class="btn btn-white fileupload-exists" data-dismiss="fileupload" id="post_image_remove_button">Remove</span>
                 </div>
               </div>
           <% end %>
-          <%= f.hidden_field 'hidden_1', value: @post.post_image_file_name, id: "hidden_1" %>
+          <%= f.hidden_field 'hidden_post_image', value: @post.post_image_file_name, id: "hidden_post_image" %>
         </div>
 
         <div class="col-sm-6 form_block_right">
@@ -90,17 +94,19 @@
             Post Image Preview
           </div>
           <div class="aspect_wrapper_main_image">
-            <div class="content_main_image" id="main_image_target">
+            <div class="content_main_image" id="post_image_target">
             </div>
           </div>
 
         </div>
-
+        </div>
       </div>
       <div class="col-sm-12 resource_break"></div>
 
       <div class="actions">
-        <%= f.submit "Create Post", class: "btn btn-lg btn-login btn-block registration_button" %>
+        <div class="row">
+        <%= f.submit "Save Post", class: "btn btn-lg btn-login btn-block registration_button", id: "save_post_button" %>
+        </div>
       </div>
 
 

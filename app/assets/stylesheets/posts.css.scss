@@ -5,9 +5,6 @@
 
 @import "colors";
 
-
-
-
 //---------------------------------------------------------------------------------------------------------------//
 //LINKS AND BUTTONS
 //---------------------------------------------------------------------------------------------------------------//
@@ -17,25 +14,72 @@ a {
 }
 a:hover {
   color: inherit;
+  text-decoration: underline;
 }
 
-.post_content {
-  a {
-    color: #428bca;
-  }
-  a:hover {
-    color: #428bca;
-    text-decoration: underline;
-  }
+.fa-plus-circle {
+  color: $home_green;
+  margin-top: 10px;
+}
+.fa-plus-circle:hover {
+  color: $home_green_2;
+  cursor: pointer;
+}
+
+#edit_post_button {
+  background-color: $home_green;
+  color: white;
+}
+#delete_post_button {
+  background-color: $home_red;
+  color: white;
+}
+#save_post_button {
+  background-color: $home_green;
+  color: white;
+}
+
+.btn-white {
+  border: 2px solid $light_grey;
+  border-radius: 5px !important;
 }
 
 
+.alert {
+  background-color: $highlight_green;
+  color: white;
+  border-radius: 0px;
+  border: 0px;
+  list-style: none;
+  text-align: left;
+  font-family: SourceSansPro-Light;
+}
 
+.alert-error {
+  background-color: $error_red;
+  color: white;
+}
 
+.close_error_alert {
+  float: right;
+  cursor: pointer;
+}
+.flash_holder {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
+  .alert {
+    margin-bottom: 0px;
+  }
+}
 //---------------------------------------------------------------------------------------------------------------//
-//MAIN
+//APPLICATION DEFAULTS
 //---------------------------------------------------------------------------------------------------------------//
+
+body {
+  line-height: inherit !important; //override bootstrap
+}
 
 #main_content {
   margin-top: 50px;
@@ -45,8 +89,7 @@ a:hover {
 .main_title_block {
   text-align: center;
   margin-top: 50px;
-  margin-bottom: 10px;
-
+  margin-bottom: 20px;
 
   .title {
     font-size: 30px;
@@ -82,6 +125,68 @@ a:hover {
   z-index: 100;
   background-color: $light_grey;
 }
+
+.aspect_wrapper_main_image::after {
+  padding-top: 45%; /* percentage of containing block _width_ */
+  display: block;
+  content: "";
+}
+
+.content_main_image {
+  position: absolute;
+  top: 0; bottom: 0; right: 0; left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 2px solid white;
+}
+
+.index_block {
+  margin-bottom: 50px;
+}
+
+.resource_break {
+  clear: both;
+}
+
+.resource_form_section {
+  margin-bottom: 10px;
+}
+.resource_form_section_title {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+.form_block_left {
+  padding-left: 0px;
+}
+.form_block_right {
+  padding-right: 0px;
+}
+
+.form_block {
+  margin-bottom: 50px;
+}
+
+.index_actions {
+  width: 100%;
+  height: 70px;
+}
+.index_title {
+  float: left;
+}
+.index_title_text {
+  font-size: 24px;
+  line-height: 70px;
+}
+.index_new {
+  display: inline;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------//
+//POSTS
+//---------------------------------------------------------------------------------------------------------------//
+
 
 .post_block {
   background-color: $light_grey;
@@ -122,7 +227,6 @@ a:hover {
 
   }
 
-
   .aspect_wrapper_main_image {
     width: 289px;
     float: right;
@@ -132,74 +236,23 @@ a:hover {
 
 }
 
-.aspect_wrapper_main_image::after {
-  padding-top: 45%; /* percentage of containing block _width_ */
-  display: block;
-  content: "";
-}
-
-.content_main_image {
-  position: absolute;
-  top: 0; bottom: 0; right: 0; left: 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-  border: 2px solid white;
-}
-
-.resource_form_section_title {
-  font-size: 16px;
-  margin-bottom: 3px;
-}
-
-.resource_break {
-  clear: both;
-}
-
-
-.form_block_left {
-  padding-left: 0px;
-}
-.form_block_right {
-  padding-right: 0px;
-}
-
-.btn-white {
-  border: 2px solid $light_grey;
-  border-radius: 5px !important;
-}
-
-.form_block {
-  margin-bottom: 50px;
-}
-
-.index_actions {
-  width: 100%;
-  height: 70px;
-}
-.index_title {
-  float: left;
-  font-size: 30px;
-  line-height: 70px;
-}
-.index_new {
+#new_post_icon {
   float: right;
-  margin-top: 10px;
+}
+#new_post_text {
+  float: right;
+  margin-right: 10px;
 
+  &:hover {
+    color: black;
+    cursor: pointer;
+  }
 }
 
 #edit_post {
   float: left;
   width: 50%;
   padding-right: 5px;
-}
-
-#edit_post_button {
-  background-color: $highlight_green;
-  color: white;
-}
-#delete_post_button {
-  background-color: $home_red;
-  color: white;
 }
 
 #delete_post {
@@ -212,4 +265,9 @@ a:hover {
   padding-bottom: 10px;
   border-bottom: 1px solid $light_grey;
   margin-bottom: 10px;
+}
+
+#post_description {
+  resize: none;
+  height: 100px;
 }

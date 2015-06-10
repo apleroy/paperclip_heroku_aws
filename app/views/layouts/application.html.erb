@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PaperclipHerokuAws</title>
+  <title>Paperclip - Heroku - AWS</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,5 +11,20 @@
 <%= render 'layouts/header' %>
 <%= yield %>
 <%= render 'layouts/footer' %>
+
+<script>
+
+    $( document ).ready( function () {
+        //set the min height of the page dynamically using js to avoid cross browser issues
+        $("#main_content").css('min-height', $(window).height() - 50);
+
+        //reset the min height of the page on window reload
+        $(window).resize(function () {
+            $("#main_content").css('min-height', $(window).height() - 50);
+        });
+
+    });
+</script>
+
 </body>
 </html>

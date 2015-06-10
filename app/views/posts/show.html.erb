@@ -13,12 +13,14 @@
           </div>
         </div>
 
+        <% unless @post.post_image.blank? %>
         <div class="image_block">
           <div class="aspect_wrapper_main_image">
             <div class="content_main_image" style="background-image: url('<%= @post.post_image.url %>');">
             </div>
           </div>
         </div>
+        <% end %>
 
           <div class="actions" id="edit_post">
             <%= link_to "Edit Post", edit_post_path(@post), id: "edit_post_button",

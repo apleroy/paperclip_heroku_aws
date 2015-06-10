@@ -1,0 +1,33 @@
+//---------------------------------------------------------------------------------------------------------------//
+//NAVBARS
+//---------------------------------------------------------------------------------------------------------------//
+
+@media (max-width: 768px) {
+  .row {
+    margin: 0px;
+  }
+  .form_block_left {
+    padding-right: 0px;
+  }
+  .form_block_right {
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .index_title_text {
+    font-size: 16px;
+  }
+
+  .post_block {
+    .aspect_wrapper_main_image {
+      display: none;
+    }
+    .post_text_wrapper {
+      width: calc(100% - 20px) !important;
+    }
+  }
+
+
+}
