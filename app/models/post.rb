@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   validates_attachment :post_image,
                        :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
                        :size => { :less_than => 5.megabytes }
+                       #:presence => true
 
   validates :name, presence: true, length: { maximum: 100 }, uniqueness: {message: "There is already a Post with this name"}
   validates :description, presence: true, length: { maximum: 300 }

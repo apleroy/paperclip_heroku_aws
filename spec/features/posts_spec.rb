@@ -21,6 +21,7 @@ feature "Posts" do
     visit new_post_path
     fill_in 'post_name', :with => post.name
     fill_in 'post_description', :with => post.description
+    attach_file "post_image_input", 'app/assets/images/test_image.png'
     expect { click_button "Save Post" }.to change { Post.count }.by(1)
     expect(page).to have_content post.name
     expect(page).to have_content post.description
@@ -30,6 +31,7 @@ feature "Posts" do
     visit new_post_path
     fill_in 'post_name', :with => " " #blank post name, should not pass validation
     fill_in 'post_description', :with => post.description
+    attach_file "post_image_input", 'app/assets/images/test_image.png'
     expect { click_button "Save Post" }.to change { Post.count }.by(0)
     expect(page).to have_css("div.alert-error")
     find_field('post_description').value.should eq post.description
@@ -39,10 +41,22 @@ feature "Posts" do
     visit new_post_path
     fill_in 'post_name', :with => post.name
     fill_in 'post_description', :with => " " #blank post description, should not pass validation
+    attach_file "post_image_input", 'app/assets/images/test_image.png'
     expect { click_button "Save Post" }.to change { Post.count }.by(0)
     expect(page).to have_css("div.alert-error")
     find_field('post_name').value.should eq post.name
   end
+
+  # scenario "new post - no file attached - post not created and error shown" do
+  #   visit new_post_path
+  #   fill_in 'post_name', :with => post.name
+  #   fill_in 'post_description', :with => post.description
+  #   #NO FILE ATTACHED, will not pass validation
+  #   expect { click_button "Save Post" }.to change { Post.count }.by(0)
+  #   expect(page).to have_css("div.alert-error")
+  #   find_field('post_name').value.should eq post.name
+  #   find_field('post_description').value.should eq post.description
+  # end
 
   #---------------------------------------------------------------------------------------------------------------//
   #POSTS INDEX
@@ -65,6 +79,7 @@ feature "Posts" do
     visit new_post_path
     fill_in 'post_name', :with => post.name
     fill_in 'post_description', :with => post.description
+    attach_file "post_image_input", 'app/assets/images/test_image.png'
     expect { click_button "Save Post" }.to change { Post.count }.by(1)
     expect(page).to have_content post.name
     expect(page).to have_content post.description
@@ -85,6 +100,7 @@ feature "Posts" do
     visit edit_post_path(post_1)
     find_field('post_name').value.should eq post_1.name
     find_field('post_description').value.should eq post_1.description
+    expect(page).to have_content 'test_image.png'
 
     fill_in 'post_name', :with => "Edited Name"
     fill_in 'post_description', :with => "Edited Description"
@@ -94,5 +110,18 @@ feature "Posts" do
     expect(page).to have_content "Edited Description"
 
   end
+
+  # scenario "edit post - successfully edit post and remove image", js:true do
+  #   visit edit_post_path(post_1)
+  #   expect(page).to have_content 'test_image.png'
+  #
+  #   find("#post_image_remove_button").click #remove the image
+  #
+  #   expect { click_button "Save Post" }.to change { Post.count }.by(0)
+  #
+  #   visit edit_post_path(post_1)
+  #   expect(page).to_not have_content "test_image.png"
+  #
+  # end
 
 end
