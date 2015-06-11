@@ -111,17 +111,17 @@ feature "Posts" do
 
   end
 
-  # scenario "edit post - successfully edit post and remove image", js:true do
-  #   visit edit_post_path(post_1)
-  #   expect(page).to have_content 'test_image.png'
-  #
-  #   find("#post_image_remove_button").click #remove the image
-  #
-  #   expect { click_button "Save Post" }.to change { Post.count }.by(0)
-  #
-  #   visit edit_post_path(post_1)
-  #   expect(page).to_not have_content "test_image.png"
-  #
-  # end
+  scenario "edit post - successfully edit post and remove image", js:true do
+    visit edit_post_path(post_1)
+    expect(page).to have_content 'test_image.png'
+
+    find("#post_image_remove_button").click #remove the image
+
+    expect { click_button "Save Post" }.to change { Post.count }.by(0)
+
+    visit edit_post_path(post_1)
+    expect(page).to_not have_content "test_image.png"
+
+  end
 
 end
