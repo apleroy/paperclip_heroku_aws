@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
   end
 
 
-  default_scope { order('created_at DESC') } #order posts in order of creation with the most recent post appearing first
+  #default_scope { order('created_at DESC') } #order posts in order of creation with the most recent post appearing first
 
   has_attached_file :post_image, :default_url => "/images/:style/missing.png"
 
