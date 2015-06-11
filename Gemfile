@@ -58,7 +58,7 @@ gem "paperclip", "~> 4.2" #https://github.com/thoughtbot/paperclip
 #http://stackoverflow.com/questions/28374401/nameerror-uninitialized-constant-paperclipstorages3aws
 gem 'aws-sdk', '< 2.0' #https://devcenter.heroku.com/articles/paperclip-s3
 
-
+gem 'friendly_id', '~> 5.1.0'
 
 #HEROKU
 #https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
