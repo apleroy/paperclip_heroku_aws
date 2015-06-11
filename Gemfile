@@ -54,9 +54,10 @@ end
 ruby "2.0.0"
 
 #HEROKU
+#https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
 gem 'rails_12factor', group: :production
 
-#https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
+
 gem 'puma'
 
 

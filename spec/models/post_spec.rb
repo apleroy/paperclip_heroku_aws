@@ -40,5 +40,4 @@ describe Post do
   it { should validate_attachment_size(:post_image).
                   less_than(5.megabytes) }
 
-
 end
