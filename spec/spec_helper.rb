@@ -62,6 +62,10 @@ Spork.prefork do
       DatabaseCleaner.clean
     end
 
+    config.after(:suite) do
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+    end
+
     # If true, the base class of anonymous controllers will be inferred
     # automatically. This will be the default behavior in future versions of
     # rspec-rails.
@@ -79,7 +83,6 @@ Spork.prefork do
     #Capybara.raise_server_errors = false #Don't care that images or assets are missing   https://github.com/jnicklas/capybara/issues/932
     config.include Capybara::DSL
     config.include Rails.application.routes.url_helpers #http://stackoverflow.com/questions/4411930/how-can-i-make-capybara-use-routing-helpers
-
     config.include Paperclip::Shoulda::Matchers #used for paperclip validations
   end
 

@@ -47,6 +47,7 @@ feature "Posts" do
     find_field('post_name').value.should eq post.name
   end
 
+  #THIS IS COMMENTED OUT AS IT IS NOT A REQUIREMENT - a post does not require an image attachment
   # scenario "new post - no file attached - post not created and error shown" do
   #   visit new_post_path
   #   fill_in 'post_name', :with => post.name
@@ -123,5 +124,16 @@ feature "Posts" do
     expect(page).to_not have_content "test_image.png"
 
   end
+
+  #---------------------------------------------------------------------------------------------------------------//
+  #DELETE POST
+  #---------------------------------------------------------------------------------------------------------------//
+
+  scenario "delete post - successfully delete post" do
+    visit post_path(post_1)
+    expect { click_link 'Delete Post' }.to change { Post.count }.by(-1)
+
+  end
+
 
 end
