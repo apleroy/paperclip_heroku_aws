@@ -50,15 +50,17 @@ group :development, :test do
   gem 'minitest' #needed for rspec support
 end
 
-
-ruby "2.0.0"
-
-#HEROKU
-#https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
-gem 'rails_12factor', group: :production
-
-
 gem 'puma'
 
 
 gem "paperclip", "~> 4.2" #https://github.com/thoughtbot/paperclip
+
+
+
+
+#HEROKU
+#https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
+gem 'rails_12factor', group: :production
+ruby "2.0.0"
+
+
