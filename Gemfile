@@ -55,6 +55,7 @@ gem 'puma'
 
 gem "paperclip", "~> 4.2" #https://github.com/thoughtbot/paperclip
 
+gem 'aws-sdk' #https://devcenter.heroku.com/articles/paperclip-s3
 
 
 
