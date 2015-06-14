@@ -12,15 +12,15 @@
  *
 
  *= require_self
- *= require application/scaffolds
+ *= require scaffolds
 
- *= require libraries/bootstrap
- *= require libraries/bootstrap-reset
- *= require libraries/jasny-bootstrap
+ *= require bootstrap
+ *= require bootstrap-reset
+ *= require jasny-bootstrap
 
- *= require application/navigation
- *= require application/footer
- *= require application/posts
- *= require application/responsive
+ *= require navigation
+ *= require footer
+ *= require posts
+ *= require responsive
  *= require font-awesome
  */

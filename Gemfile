@@ -18,6 +18,11 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
+gem 'jquery-turbolinks' #https://github.com/kossnocorp/jquery.turbolinks
+
+
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -26,20 +31,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-gem 'factory_girl_rails'
-
 group :development, :test do
+  gem 'factory_girl_rails'
   gem 'rspec-rails', '2.13.1' #http://stackoverflow.com/questions/22962048/rails-4-could-not-find-generator-rspecinstall
   gem 'selenium-webdriver', "~> 2.43"
   gem 'capybara'
@@ -61,7 +54,8 @@ gem 'aws-sdk', '< 2.0' #https://devcenter.heroku.com/articles/paperclip-s3
 gem 'friendly_id', '~> 5.1.0'
 
 #HEROKU
-#https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku-gems
+#https://devcenter.heroku.com/articles/getting-started-with-rails4#heroku_gems
+
 gem 'rails_12factor', group: :production
 ruby "2.0.0"
 

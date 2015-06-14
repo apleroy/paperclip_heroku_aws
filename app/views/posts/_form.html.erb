@@ -17,41 +17,47 @@
           <% end %>
       </div>
 
-      <div class="resource_form_section">
+      <div class="resource_form_section js-resource_form_section">
         <div class="row">
         <div class="resource_form_section_title">
-          Post Name (required)
+          <div class="title_left">Post Name</div>
+          <div class="title_right"><i class="fa fa-check js-success_display"></i></div>
+          <div class="title_right js-title_right js-title_required">(required)</div>
         </div>
 
-        <%= f.text_field :name, maxlength: 100, class: "new_resource_field", id: "post_name" %>
+        <%= f.text_field :name, maxlength: 100, class: "new_resource_field js-resource_field js-required_field", id: "post_name" %>
         </div>
       </div>
       <div class="col-sm-12 resource_break"></div>
 
-      <div class="resource_form_section">
+      <div class="resource_form_section js-resource_form_section">
         <div class="row">
         <div class="resource_form_section_title">
-          Post Description (required)
+          <div class="title_left">Post Description</div>
+          <div class="title_right"><i class="fa fa-check js-success_display"></i></div>
+          <div class="title_right js-title_right js-title_required">(required)</div>
         </div>
 
-        <%= f.text_area :description, maxlength: 300, class: "new_resource_field", id: "post_description" %>
+        <%= f.text_area :description, maxlength: 200, class: "new_resource_field js-resource_field js-required_field", id: "post_description" %>
         </div>
       </div>
       <div class="col-sm-12 resource_break"></div>
 
 
-      <div class="resource_form_section">
+      <div class="resource_form_section js-resource_form_section">
         <div class="row">
         <div class="col-sm-6 form_block_left">
           <div class="resource_form_section_title">
-            Post Image (option)
+            <div class="title_left">Post Image</div>
+            <div class="title_right"><i class="fa fa-check js-success_display"></i></div>
+            <div class="title_right js-title_right js-title_optional">(optional)</div>
           </div>
 
           <% if @post.post_image.blank? %>
               <div class="fileupload fileupload-new" data-provides="fileupload">
                 <div class="input-append">
                   <div class="new_resource_field">
-                    <span class="fileupload-preview"></span>
+                    <span class="fileupload-preview js-resource_field"></span>
                   </div>
                     <span class="btn btn-white btn-file">
                       <span class="fileupload-new">
@@ -69,7 +75,7 @@
               <div class="fileupload fileupload-exists" data-provides="fileupload">
                 <div class="input-append">
                   <div class="new_resource_field">
-                  <span class="fileupload-preview">
+                  <span class="fileupload-preview js-resource_field">
                     <%= @post.post_image_file_name %>
                   </span>
                   </div>

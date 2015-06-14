@@ -29,7 +29,7 @@ describe Post do
   end
 
   describe "when description is too long (greater than 300 characters)" do
-    before { @post.description = "a" * 301 }
+    before { @post.description = "a" * 201 }
     it { should_not be_valid }
   end
 

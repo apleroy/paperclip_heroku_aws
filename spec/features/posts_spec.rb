@@ -47,17 +47,17 @@ feature "Posts" do
     find_field('post_name').value.should eq post.name
   end
 
-  #THIS IS COMMENTED OUT AS IT IS NOT A REQUIREMENT - a post does not require an image attachment
-  # scenario "new post - no file attached - post not created and error shown" do
-  #   visit new_post_path
-  #   fill_in 'post_name', :with => post.name
-  #   fill_in 'post_description', :with => post.description
-  #   #NO FILE ATTACHED, will not pass validation
-  #   expect { click_button "Save Post" }.to change { Post.count }.by(0)
-  #   expect(page).to have_css("div.alert-error")
-  #   find_field('post_name').value.should eq post.name
-  #   find_field('post_description').value.should eq post.description
-  # end
+
+  scenario "new post - invalid attachment type - post not created and error shown" do
+    visit new_post_path
+    fill_in 'post_name', :with => post.name
+    fill_in 'post_description', :with => post.description
+    attach_file "post_image_input", 'app/assets/images/test_text_file.txt' #not a valid image attachment type
+    expect { click_button "Save Post" }.to change { Post.count }.by(0)
+    expect(page).to have_css("div.alert-error")
+    find_field('post_name').value.should eq post.name
+    find_field('post_description').value.should eq post.description
+  end
 
   #---------------------------------------------------------------------------------------------------------------//
   #POSTS INDEX
@@ -119,10 +119,8 @@ feature "Posts" do
     find("#post_image_remove_button").click #remove the image
 
     expect { click_button "Save Post" }.to change { Post.count }.by(0)
-
     visit edit_post_path(post_1)
     expect(page).to_not have_content "test_image.png"
-
   end
 
   #---------------------------------------------------------------------------------------------------------------//
@@ -132,8 +130,6 @@ feature "Posts" do
   scenario "delete post - successfully delete post" do
     visit post_path(post_1)
     expect { click_link 'Delete Post' }.to change { Post.count }.by(-1)
-
   end
-
 
 end

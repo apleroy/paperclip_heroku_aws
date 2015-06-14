@@ -40,30 +40,33 @@ Spork.prefork do
     # instead of true.
     #config.use_transactional_fixtures = true
 
-    config.use_transactional_fixtures = false #http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/
 
-    config.before(:suite) do
-      DatabaseCleaner.clean_with(:truncation)
-    end
+    #http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/ --------------
+      config.use_transactional_fixtures = false
 
-    config.before(:each) do
-      DatabaseCleaner.strategy = :transaction
-    end
+      config.before(:suite) do
+        DatabaseCleaner.clean_with(:truncation)
+      end
 
-    config.before(:each, :js => true) do
-      DatabaseCleaner.strategy = :truncation
-    end
+      config.before(:each) do
+        DatabaseCleaner.strategy = :transaction
+      end
 
-    config.before(:each) do
-      DatabaseCleaner.start
-    end
+      config.before(:each, :js => true) do
+        DatabaseCleaner.strategy = :truncation
+      end
 
-    config.after(:each) do
-      DatabaseCleaner.clean
-    end
+      config.before(:each) do
+        DatabaseCleaner.start
+      end
+
+      config.after(:each) do
+        DatabaseCleaner.clean
+      end
+    #---------------------------------------
 
     config.after(:suite) do
-      FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"]) #removes the temporary directory to hold paperclip file attachments
     end
 
     # If true, the base class of anonymous controllers will be inferred
@@ -78,9 +81,9 @@ Spork.prefork do
     config.order = "random"
 
     Capybara.register_driver :selenium do |app|
-      Capybara::Selenium::Driver.new(app, :browser => :chrome) #see chromium gem
+      Capybara::Selenium::Driver.new(app, :browser => :chrome) #https://github.com/flavorjones/chromedriver-helper
     end
-    #Capybara.raise_server_errors = false #Don't care that images or assets are missing   https://github.com/jnicklas/capybara/issues/932
+
     config.include Capybara::DSL
     config.include Rails.application.routes.url_helpers #http://stackoverflow.com/questions/4411930/how-can-i-make-capybara-use-routing-helpers
     config.include Paperclip::Shoulda::Matchers #used for paperclip validations

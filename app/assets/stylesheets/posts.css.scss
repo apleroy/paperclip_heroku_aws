@@ -160,6 +160,21 @@ body {
 .resource_form_section_title {
   font-size: 16px;
   margin-bottom: 3px;
+  height: 20px;
+
+  .title_left {
+    float: left;
+  }
+  .title_right {
+    float: right;
+  }
+  .fa-check {
+    color: $home_green;
+  }
+  .js-title_required {
+    color: $error_red;
+  }
+
 }
 
 .form_block_left {
