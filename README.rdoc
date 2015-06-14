@@ -7,9 +7,13 @@ The Challenge and End Result
 This post walks through the build out of a basic rails CRUD app and specifically addresses the following:
 
 + Integrating paperclip, heroku, aws s3, and friendly_id into a basic rails CRUD application that allows for image uploads.
+
 + Integration of a css library, jasny-bootstrap, that provides a clean UI for file uploads.
+
 + Basic setup of javascript for image previews, client side form validation, and Turbolinks functionality.
+
 + Deployment, hosting, and basic maintenance operations for paperclip in a production environment on Heroku.
+
 + Basic unit and integration testing with paperclip using spork, rspec, capybara, factory_girl, and selenium.
 
 The end result of this tutorial is an application that can be seen at http://guarded-plateau-4115.herokuapp.com/ (please note this app is hosted using Heroku's free dynos and it may take 5-10 seconds to fire up).
