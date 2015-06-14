@@ -1,28 +1,17 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This post and tutorial gives background into how to build a basic create/read/update/delete (CRUD) application using Ruby/Rails. The focus of this post is how to set up a file attachment system and put it into production, using the fantastic resources contributed to the the rails and open source community from thoughtbot, Heroku, and Amazon. This post explores the specifics of thoughtbot’s paperclip gem, Heroku’s application hosting platform, and Amazon Web Services’ S3 for attachment/image hosting.
 
-Things you may want to cover:
+The Challenge and End Result
 
-* Ruby version
+This post walks through the build out of a basic rails CRUD app and specifically addresses the following:
 
-* System dependencies
++ Integrating paperclip, heroku, aws s3, and friendly_id into a basic rails CRUD application that allows for image uploads.
++ Integration of a css library, jasny-bootstrap, that provides a clean UI for file uploads.
++ Basic setup of javascript for image previews, client side form validation, and Turbolinks functionality.
++ Deployment, hosting, and basic maintenance operations for paperclip in a production environment on Heroku.
++ Basic unit and integration testing with paperclip using spork, rspec, capybara, factory_girl, and selenium.
 
-* Configuration
+The end result of this tutorial is an application that can be seen at http://guarded-plateau-4115.herokuapp.com/ (please note this app is hosted using Heroku's free dynos and it may take 5-10 seconds to fire up).
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+For a full walkthrough and tutorial please visit: http://apleroy.com/posts/integrating-paperclip-with-heroku-and-aws-s3
